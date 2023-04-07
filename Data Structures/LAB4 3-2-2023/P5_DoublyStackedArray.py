@@ -4,7 +4,7 @@
 # Task : Write a program to implement two stacks in an array
 
 import os
-
+import math
 
 class DoubleStack:
     def __init__(self, n):
@@ -26,14 +26,14 @@ class DoubleStack:
             return False
 
     def push1(self):
-        if self.top1 != int(self.size/2+1):
+        if self.top1 != int((self.size/2)):
             self.stack[self.top1] = input("Enter element: ")
             self.top1 += 1
         else:
             print("Stack is full!")
 
     def push2(self):
-        if self.top2 != (int(self.size/2)):
+        if self.top2 != (int(self.size/2)-1):
             self.stack[self.top2] = input("Enter element: ")
             self.top2 -= 1
         else:
@@ -54,9 +54,7 @@ class DoubleStack:
             print("No element present!")
 
     def displayStack(self):
-        print(self.stack[0:int(self.size/2)+1], end="")
-        print("<>", end="")
-        print(self.stack[(int(self.size/2)+1):int(self.size)], end="")
+        print(*self.stack, sep=" | ")
 
 
 def stackloop(DoubleStack):
