@@ -11,27 +11,28 @@ public:
     Queue(int capacity)
     {
         size = capacity;
-        queue = new char[size];
+        // queue = new char[size];
+        queue = (char *)calloc(size, sizeof(char));
         front = -1;
         rear = -1;
     }
 
-    int isNull()
+    // int isNull()
+    // {
+    //     if ((front == -1) && (rear == -1))
+    //         return 1;
+    //     return 0;
+    // }
+
+    // int isFull()
+    // {
+    //     if (rear == size - 1)
+    //         return 1;
+    //     return 0;
+    // }
+    int deleteq()
     {
         if ((front == -1) && (rear == -1))
-            return 1;
-        return 0;
-    }
-
-    int isFull()
-    {
-        if (rear == size - 1)
-            return 1;
-        return 0;
-    }
-    int dequeue()
-    {
-        if (isNull())
         {
             cout << "Queue Underflow!" << endl;
         }
@@ -44,16 +45,16 @@ public:
             return x;
         }
     }
-    void enqueue(int c)
+    void insertq(char c)
     {
-        if (isFull())
+        if (rear == size - 1)
         {
             cout << "Queue Overflow!" << endl;
         }
         else
         {
-            cout << "INSERTING " << (char)c << endl;
-            if (isNull())
+            cout << "INSERTING " << c << endl;
+            if ((front == -1) && (rear == -1))
             {
                 front++;
                 rear++;
@@ -66,14 +67,17 @@ public:
             }
         }
     }
-    void display()
+    void displayq()
     {
         if ((front == -1) && (rear == -1))
             cout << "QUEUE EMPTY!" << endl;
         else
         {
             cout << "DISPLAYING" << endl;
-            for (int i = front; i < rear + 1; i++)
+            // for (int i = front; i < rear + 1; i++)
+            //     cout << queue[i] << ", ";
+
+            for (int i = 0; i < size; i++)
                 cout << queue[i] << ", ";
         }
         cout << endl;
@@ -83,21 +87,22 @@ public:
 int main()
 {
     Queue newq(5);
-    newq.display();
-    newq.enqueue('a');
-    newq.enqueue('b');
-    newq.display();
-    newq.dequeue();
-    newq.display();
-    newq.enqueue('c');
-    newq.enqueue('d');
-    newq.enqueue('e');
+    newq.displayq();
+    newq.insertq('a');
+    newq.insertq('b');
+    newq.displayq();
+    newq.deleteq();
+    newq.displayq();
+    newq.insertq('c');
+    newq.insertq('d');
+    newq.insertq('e');
+    newq.displayq();
     // cout << "rear = " << newq.rear << " front= " << newq.front << endl;
-    newq.enqueue('f');
+    newq.insertq('f');
     // cout << "rear = " << newq.rear << " front= " << newq.front << endl;
-    newq.enqueue('g');
+    // newq.insertq('g');
     // cout << "rear = " << newq.rear << " front= " << newq.front << endl;
-    newq.enqueue('h');
-    newq.display();
+    // newq.insertq('h');
+    newq.displayq();
     return 0;
 }

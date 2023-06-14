@@ -15,7 +15,7 @@ public:
     CircularQueue(int size)
     {
         MAX_SIZE = size;
-        queue = new string[MAX_SIZE];
+        queue = (string *)calloc(size, sizeof(string));
         front = -1;
         rear = -1;
     }
@@ -63,16 +63,49 @@ public:
             cout << str << " deleted from queue." << endl;
             if (front == rear)
             {
+                queue[front] = '\0';
                 front = -1;
                 rear = -1;
             }
             else
             {
+                queue[front] = '\0';
                 front = (front + 1);
             }
         }
         return str;
     }
+
+    // void display()
+    // {
+    //     if (isEmpty())
+    //     {
+    //         cout << "Queue is empty!" << endl;
+    //     }
+    //     else
+    //     {
+    //         cout << "Elements in circular queue are: " << endl;
+    //         if (rear >= front)
+    //         {
+    //             for (int i = front; i <= rear; i++)
+    //             {
+    //                 cout << queue[i] << ", ";
+    //             }
+    //         }
+    //         else
+    //         {
+    //             for (int i = front; i < MAX_SIZE; i++)
+    //             {
+    //                 cout << queue[i] << " ";
+    //             }
+    //             for (int i = 0; i <= rear; i++)
+    //             {
+    //                 cout << queue[i] << " ";
+    //             }
+    //         }
+    //         cout << endl;
+    //     }
+    // }
 
     void display()
     {
@@ -82,27 +115,10 @@ public:
         }
         else
         {
-            cout << "Elements in circular queue are: " << endl;
-            if (rear >= front)
-            {
-                for (int i = front; i <= rear; i++)
-                {
-                    cout << queue[i] << ", ";
-                }
-            }
-            else
-            {
-                for (int i = front; i < MAX_SIZE; i++)
-                {
-                    cout << queue[i] << " ";
-                }
-                for (int i = 0; i <= rear; i++)
-                {
-                    cout << queue[i] << " ";
-                }
-            }
-            cout << endl;
+            for (int i = 0; i < MAX_SIZE; i++)
+                cout << queue[i] << ", ";
         }
+        cout << endl;
     }
 };
 

@@ -10,8 +10,8 @@ private:
 public:
     DoubleCircularQueue(int capacity)
     {
-        arr = new int[capacity];
-        capacity = capacity;
+        arr = (int *)calloc(capacity, sizeof(int));
+        this->capacity = capacity;
         size1 = 0;
         size2 = 0;
         front1 = rear1 = -1;
@@ -128,9 +128,10 @@ public:
             cout << "Queue 1 is empty" << endl;
             return;
         }
+        cout<<"Queue 1 >>> ";
         for (int i = front1; i <= rear1; i = (i + 1))
         {
-            cout << arr[i] << " ";
+            cout << arr[i] << ", ";
         }
         cout << endl;
     }
@@ -142,9 +143,10 @@ public:
             cout << "Queue 2 is empty" << endl;
             return;
         }
+        cout<<"Queue 2 >>> ";
         for (int i = front2; i >= rear2; i = (i - 1))
         {
-            cout << arr[i] << " ";
+            cout << arr[i] << ", ";
         }
         cout << endl;
     }
@@ -175,11 +177,11 @@ int main()
     q.display1();
     q.display2();
 
-    q.enqueue1(7);
-    q.enqueue2(8);
+    // q.enqueue1(7);
+    // q.enqueue2(8);
 
-    q.display1();
-    q.display2();
+    // q.display1();
+    // q.display2();
 
     return 0;
 }

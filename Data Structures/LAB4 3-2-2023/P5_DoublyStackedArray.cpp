@@ -4,7 +4,7 @@
 // # Task : Write a program to implement two stacks in an array
 
 #include <iostream>
-
+using namespace std;
 class DoublyStack {
 private:
     int* arr;    // Array to store the elements
@@ -29,7 +29,7 @@ public:
         if (top1 < top2 - 1) {
             arr[++top1] = data;
         } else {
-            std::cout << "Stack 1 overflow!\n";
+            cout << "Stack 1 overflow!\n";
         }
     }
 
@@ -38,7 +38,7 @@ public:
         if (top1 < top2 - 1) {
             arr[--top2] = data;
         } else {
-            std::cout << "Stack 2 overflow!\n";
+            cout << "Stack 2 overflow!\n";
         }
     }
 
@@ -47,7 +47,7 @@ public:
         if (top1 >= 0) {
             return arr[top1--];
         } else {
-            std::cout << "Stack 1 is empty!\n";
+            cout << "Stack 1 is empty!\n";
             return -1;
         }
     }
@@ -57,24 +57,24 @@ public:
         if (top2 < size) {
             return arr[top2++];
         } else {
-            std::cout << "Stack 2 is empty!\n";
+            cout << "Stack 2 is empty!\n";
             return -1;
         }
     }
 
     // Display all elements in both stacks
     void display() {
-        std::cout << "Elements in Stack 1: ";
+        cout << "Elements in Stack 1: ";
         for (int i = top1; i >= 0; --i) {
-            std::cout << arr[i] << " ";
+            cout << arr[i] << " ";
         }
-        std::cout << "\n";
+        cout << "\n";
 
-        std::cout << "Elements in Stack 2: ";
+        cout << "Elements in Stack 2: ";
         for (int i = top2; i < size; ++i) {
-            std::cout << arr[i] << " ";
+            cout << arr[i] << " ";
         }
-        std::cout << "\n";
+        cout << "\n";
     }
 };
 
