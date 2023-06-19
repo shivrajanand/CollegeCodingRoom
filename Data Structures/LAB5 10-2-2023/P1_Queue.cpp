@@ -55,16 +55,10 @@ public:
         {
             cout << "INSERTING " << c << endl;
             if ((front == -1) && (rear == -1))
-            {
                 front++;
-                rear++;
-                queue[rear] = c;
-            }
-            else
-            {
-                rear++;
-                queue[rear] = c;
-            }
+
+            rear++;
+            queue[rear] = c;
         }
     }
     void displayq()

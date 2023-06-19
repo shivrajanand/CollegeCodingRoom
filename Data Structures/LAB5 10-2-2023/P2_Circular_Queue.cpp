@@ -61,17 +61,11 @@ public:
         {
             str = queue[front];
             cout << str << " deleted from queue." << endl;
+            queue[front] = '\0';
             if (front == rear)
-            {
-                queue[front] = '\0';
-                front = -1;
-                rear = -1;
-            }
+                front = rear = -1;
             else
-            {
-                queue[front] = '\0';
                 front = (front + 1);
-            }
         }
         return str;
     }
@@ -139,6 +133,10 @@ int main()
     // cout << "rear = " << newq.rear << " front= " << newq.front << endl;
     newq.enqueue("seventh");
     // cout << "rear = " << newq.rear << " front= " << newq.front << endl;
+    newq.enqueue("eighth");
+    newq.display();
+    newq.dequeue();
+    newq.display();
     newq.enqueue("eighth");
     newq.display();
     return 0;
