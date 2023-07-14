@@ -23,7 +23,7 @@ public:
         cout << "Feet = " << feet << " Inch = " << inch << endl;
     }
 
-    friend Distance operator+(float f, const Distance &obj);
+    friend Distance operator+(float f, const Distance &d);
 };
 
 Distance operator+(float f, const Distance &d)
